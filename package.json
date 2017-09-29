@@ -1,0 +1,27 @@
+{
+  "name": "wheeler-2d",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/mocha": "^2.2.43",
+    "@types/node": "^8.0.31",
+    "mocha": "^3.5.3",
+    "typescript": "^2.5.3"
+  },
+  "scripts": {
+    "compile": "tsc",
+    "test": "npm run compile && mocha dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crampas/wheeler-2d-js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crampas/wheeler-2d-js/issues"
+  },
+  "homepage": "https://github.com/crampas/wheeler-2d-js#readme"
+}
