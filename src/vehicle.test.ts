@@ -1,13 +1,12 @@
 import {Vehicle, Car} from "./vehicle"
 import {Vector} from "./vector"
 import {Angle} from "./angle"
-import assert = require('assert');
-import {expect} from 'chai';
-require("mocha");
+import {assert, expect} from 'chai';
+
 
 
 function assertRange(actual: number, expected: number, interval: number) {
-    assert(Math.abs(expected - actual) < interval, `actual ${actual} expected ${expected}`);
+    expect(actual).closeTo(expected, interval);
 }
 
 function assertPoint(actual: Vector, expected: Vector, interval: number) {

@@ -7,8 +7,6 @@ function assertPoint(actual: Vector, expected: Vector, interval: number) {
     expect(actual.y).closeTo(expected.y, interval);
 }
 
-
-
 describe('Vector', function() {
     describe('#add()', function() {
         it('should move relative', function() {

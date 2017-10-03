@@ -26,8 +26,9 @@ export class Vehicle {
 }
 
 export class Car extends Vehicle {
-    public velocity: number;
-    public axis: number;
+    public velocity: number = 0;
+    public helm: Vector = new Vector(1, 0);
+    public axis: number = -3;
 
     constructor(position: Vector = new Vector(0, 0), direction: Vector = new Vector(1, 0)) {
         super(position, direction);
