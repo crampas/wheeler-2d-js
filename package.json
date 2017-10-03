@@ -5,8 +5,10 @@
   "main": "dist/index.js",
   "dependencies": {},
   "devDependencies": {
+    "@types/chai": "^4.0.4",
     "@types/mocha": "^2.2.43",
     "@types/node": "^8.0.31",
+    "chai": "^4.1.2",
     "mocha": "^3.5.3",
     "typescript": "^2.5.3"
   },
