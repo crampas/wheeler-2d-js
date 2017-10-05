@@ -12,6 +12,10 @@ export class Vector {
         return new Vector(this.x + rhs.x, this.y + rhs.y);
     }
 
+    public sub(rhs: Vector): Vector {
+        return new Vector(this.x - rhs.x, this.y - rhs.y);
+    }
+
     public mul(rhs: number): Vector {
         return new Vector(this.x * rhs, this.y * rhs);
     }

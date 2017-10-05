@@ -1,4 +1,4 @@
-import {Vehicle, Car} from "./vehicle"
+import {Vehicle} from "./vehicle"
 import {Vector} from "./vector"
 import {Angle} from "./angle"
 import {assert, expect} from 'chai';
@@ -95,27 +95,53 @@ describe('Vehicle', function() {
         });
     });
 
-
-    describe('#pull()', function() {
-        let v = new  Vehicle(new Vector(3, 7), Angle.fromDegre(22));
-        it('shoud move relative', function() {
-            v.pull(new Vector(2, 3));
-            assertPoint(v.position, new Vector(5, 10), 0.001);
-            expect(Angle.getDegre(v.direction)).closeTo(22, 0.001);
+    describe('#getAbsolute() with identity', function() {
+        let v = new  Vehicle(new Vector(0, 0), Angle.fromDegre(0));
+        it('for (1,0) should return (1,0)', function() {
+            assertPoint(v.getAbsolute(new Vector(1, 0)), new Vector(1, 0), 0.001);
+        });
+        it('for (0,1) should return (0,1)', function() {
+            assertPoint(v.getAbsolute(new Vector(0, 1)), new Vector(0, 1), 0.001);
+        });
+        it('for (1,1) should return (1,1)', function() {
+            assertPoint(v.getAbsolute(new Vector(1, 1)), new Vector(1, 1), 0.001);
         });
     });
-});
 
 
-describe('Car', function() {
+    describe('#getAbsolute() with 45 degree', function() {
+        let v = new  Vehicle(new Vector(0, 0), Angle.fromDegre(45));
+        it('for (1,0) should return (0.707,0.707)', function() {
+            assertPoint(v.getAbsolute(new Vector(1, 0)), new Vector(0.707, 0.707), 0.001);
+        });
+        it('for (0,1) should return (-0.707,0.707)', function() {
+            assertPoint(v.getAbsolute(new Vector(0, 1)), new Vector(-0.707, 0.707), 0.001);
+        });
+        it('for (1,1) should return (0,1.414)', function() {
+            assertPoint(v.getAbsolute(new Vector(1, 1)), new Vector(0, 1.414), 0.001);
+        });
+    });
+
+
+
     describe('#pull() in facing direction', function() {
         it('shold move forward', function() {
-            let v = new  Car(new Vector(3, 7), Angle.fromRad(Math.PI / 4));
+            let v = new  Vehicle(new Vector(3, 7), Angle.fromRad(Math.PI / 4));
             v.axis = -3;
             v.pull(new Vector(4, 4));
             assertPoint(v.position, new Vector(7, 11), 0.001);
             assertRange(Angle.getRad(v.direction), Math.PI / 4, 0.001);
         });
+        it('shold rotate', function() {
+            let v = new  Vehicle(new Vector(0, 0), new Vector(0, 1));
+            v.axis = -5;
+            v.pull(new Vector(1, 0));
+            assertPoint(v.position, new Vector(1, 0), 0.001);
+            assertPoint(v.direction, new Vector(0.196, 0.980), 0.001);
+        });
     });
+
 });
+
+
 
