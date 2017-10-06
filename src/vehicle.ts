@@ -5,6 +5,7 @@ export class Vehicle {
     public position: Vector;
     public direction: Vector;
     public axis: number = -3;
+    public tender: Vehicle;
     
     constructor(position: Vector = new Vector(0, 0), direction: Vector = new Vector(1, 0)) {
         this.position = position;
@@ -28,9 +29,22 @@ export class Vehicle {
     }
 
     public pull(d: Vector): void {
+
+        let tenderPositionRelative: Vector = new Vector();
+        if (this.tender) {
+            tenderPositionRelative = this.getRelative(this.tender.position);
+        }
+
         this.position = this.position.add(d);
         let axis = this.direction.mul(-this.axis);
         this.direction = axis.add(d).normalize();
+
+        if (this.tender) {
+            let tenderPositionNew = this.getAbsolute(tenderPositionRelative);
+            let tenderDelta = tenderPositionNew.sub(this.tender.position);
+            this.tender.pull(tenderDelta);
+        }
+
     }
 }
 

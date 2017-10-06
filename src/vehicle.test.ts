@@ -141,6 +141,20 @@ describe('Vehicle', function() {
         });
     });
 
+
+    describe('#pull() with tender', function() {
+        it('tener shold move forward', function() {
+            let car = new Vehicle(new Vector(4, 7), Angle.fromRad(0));
+            car.axis = -3;
+            car.tender = new Vehicle(new Vector(0, 7), Angle.fromRad(0));
+            car.tender.axis = -2;
+
+            car.pull(new Vector(1, 0));
+
+            assertPoint(car.tender.position, new Vector(1, 7), 0.001);
+        });
+    });
+
 });
 
 
