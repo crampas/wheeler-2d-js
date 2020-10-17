@@ -5,7 +5,7 @@ export class Vehicle {
     public position: Vector;
     public direction: Vector;
     public axis: number = -3;
-    public tender: Vehicle;
+    public tender: Vehicle | null = null;
     
     constructor(position: Vector = new Vector(0, 0), direction: Vector = new Vector(1, 0)) {
         this.position = position;

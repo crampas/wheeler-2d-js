@@ -143,7 +143,7 @@ describe('Vehicle', function() {
 
 
     describe('#pull() with tender', function() {
-        it('tener shold move forward', function() {
+        it('tender shold move forward', function() {
             let car = new Vehicle(new Vector(4, 7), Angle.fromRad(0));
             car.axis = -3;
             car.tender = new Vehicle(new Vector(0, 7), Angle.fromRad(0));
